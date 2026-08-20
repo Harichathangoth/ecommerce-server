@@ -1,0 +1,7 @@
+export const APP_CONSTANTS = {
+  API_PREFIX: 'api/v1',
+  DEFAULT_PAGE_SIZE: 20,
+  MAX_PAGE_SIZE: 100,
+  ORDER_NUMBER_PREFIX: 'ORD',
+  TRANSFER_NUMBER_PREFIX: 'TRF',
+} as const;

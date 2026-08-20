@@ -1,0 +1,7 @@
+export enum TransferStatus {
+  REQUESTED = 'REQUESTED',
+  APPROVED = 'APPROVED',
+  IN_TRANSIT = 'IN_TRANSIT',
+  COMPLETED = 'COMPLETED',
+  REJECTED = 'REJECTED',
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "code": "HQ-01",
+    "name": "Main Headquarters (HQ-01)",
+    "address": "100 Enterprise Way, Suite 500, New York, NY 10001",
+    "city": "New York",
+    "phone": "+1 (212) 555-0199",
+    "isActive": true
+  },
+  {
+    "code": "EST-02",
+    "name": "East Coast Distribution Hub (EST-02)",
+    "address": "450 Logistics Blvd, Boston, MA 02110",
+    "city": "Boston",
+    "phone": "+1 (617) 555-0244",
+    "isActive": true
+  },
+  {
+    "code": "WST-03",
+    "name": "West Coast Fulfillment Hub (WST-03)",
+    "address": "880 Silicon Parkway, San Jose, CA 95110",
+    "city": "San Jose",
+    "phone": "+1 (408) 555-0811",
+    "isActive": true
+  }
+]

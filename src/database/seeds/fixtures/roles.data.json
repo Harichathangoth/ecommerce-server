@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Super Administrator",
+    "slug": "super_admin",
+    "isSystemRole": true,
+    "description": "Full system control across all branches and modules",
+    "permissionSlugs": [
+      "users:read", "users:create", "users:update", "users:delete", "roles:manage",
+      "products:read", "products:create", "products:update", "products:delete",
+      "inventory:read", "inventory:update", "transfers:initiate", "transfers:approve",
+      "orders:read", "orders:dispatch", "orders:refund",
+      "branches:read", "branches:manage", "audit:read"
+    ]
+  },
+  {
+    "name": "Branch Manager",
+    "slug": "branch_admin",
+    "isSystemRole": true,
+    "description": "Manages branch inventory, orders, and branch staff members",
+    "permissionSlugs": [
+      "users:read", "users:create", "users:update",
+      "products:read", "products:update",
+      "inventory:read", "inventory:update", "transfers:initiate", "transfers:approve",
+      "orders:read", "orders:dispatch", "orders:refund",
+      "branches:read"
+    ]
+  },
+  {
+    "name": "Branch Staff Member",
+    "slug": "branch_staff",
+    "isSystemRole": true,
+    "description": "Branch operational staff handling inventory updates and order dispatch",
+    "permissionSlugs": [
+      "products:read",
+      "inventory:read", "inventory:update", "transfers:initiate",
+      "orders:read", "orders:dispatch",
+      "branches:read"
+    ]
+  }
+]

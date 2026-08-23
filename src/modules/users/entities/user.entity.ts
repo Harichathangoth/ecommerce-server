@@ -10,7 +10,7 @@ import {
   BeforeInsert,
 } from 'typeorm';
 import { v7 as uuidv7 } from 'uuid';
-import { Role } from '../../../common/enums/role.enum';
+import { Role } from '../../roles/entities/role.entity';
 import { Branch } from '../../branches/entities/branch.entity';
 import { Order } from '../../orders/entities/order.entity';
 
@@ -38,7 +38,11 @@ export class User {
   @Column({ nullable: true })
   phone: string;
 
-  @Column({ type: 'enum', enum: Role, default: Role.CUSTOMER })
+  @Column({ nullable: true })
+  roleId: string;
+
+  @ManyToOne(() => Role, (role) => role.users, { eager: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'roleId' })
   role: Role;
 
   @Column({ nullable: true })

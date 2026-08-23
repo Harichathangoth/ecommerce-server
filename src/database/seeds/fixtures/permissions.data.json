@@ -1,0 +1,21 @@
+[
+  { "slug": "users:read", "name": "View Users & Staff Profiles", "group": "USER_MANAGEMENT", "description": "View staff profiles and user records" },
+  { "slug": "users:create", "name": "Create Staff Members", "group": "USER_MANAGEMENT", "description": "Create new staff accounts and assign branches" },
+  { "slug": "users:update", "name": "Update User Details", "group": "USER_MANAGEMENT", "description": "Update user roles and branch assignments" },
+  { "slug": "users:delete", "name": "Delete User Accounts", "group": "USER_MANAGEMENT", "description": "Deactivate or remove user records" },
+  { "slug": "roles:manage", "name": "Manage Roles & Permissions", "group": "USER_MANAGEMENT", "description": "Create custom roles and assign permissions" },
+  { "slug": "products:read", "name": "View Product Catalog", "group": "CATALOG", "description": "Browse product catalog and details" },
+  { "slug": "products:create", "name": "Create Catalog Products", "group": "CATALOG", "description": "Add new products and variants" },
+  { "slug": "products:update", "name": "Update Product Catalog", "group": "CATALOG", "description": "Modify prices, specifications, and images" },
+  { "slug": "products:delete", "name": "Delete Products", "group": "CATALOG", "description": "Archive or remove products" },
+  { "slug": "inventory:read", "name": "View Branch Inventory", "group": "INVENTORY", "description": "View stock levels across store branches" },
+  { "slug": "inventory:update", "name": "Adjust Stock Levels", "group": "INVENTORY", "description": "Manually update stock quantities" },
+  { "slug": "transfers:initiate", "name": "Initiate Stock Transfers", "group": "INVENTORY", "description": "Request inter-branch inventory transfers" },
+  { "slug": "transfers:approve", "name": "Approve Stock Transfers", "group": "INVENTORY", "description": "Approve or dispatch stock transfer requests" },
+  { "slug": "orders:read", "name": "View Customer Orders", "group": "ORDERS", "description": "View regional customer order records" },
+  { "slug": "orders:dispatch", "name": "Update Order Dispatch", "group": "ORDERS", "description": "Update processing, dispatch, and delivery status" },
+  { "slug": "orders:refund", "name": "Process Order Refunds", "group": "ORDERS", "description": "Issue customer refunds and handle returns" },
+  { "slug": "branches:read", "name": "View Store Branches", "group": "BRANCHES", "description": "View store branch locations and details" },
+  { "slug": "branches:manage", "name": "Manage Store Branches", "group": "BRANCHES", "description": "Create or update store branches" },
+  { "slug": "audit:read", "name": "View Audit Logs", "group": "SYSTEM", "description": "View security audit trails and system activity logs" }
+]

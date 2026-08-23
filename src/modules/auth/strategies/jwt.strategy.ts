@@ -1,15 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import { FastifyRequest } from 'fastify';
+import { UsersService } from '../../users/users.service';
+import { AUTH_COOKIES } from '../constants/auth.constants';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private readonly usersService: UsersService) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (request: FastifyRequest) => {
-          return request?.cookies?.access_token || null;
+          return request?.cookies?.[AUTH_COOKIES.ACCESS_TOKEN] || null;
         },
         ExtractJwt.fromAuthHeaderAsBearerToken(),
       ]),
@@ -19,11 +21,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
+    const user = await this.usersService.findById(payload.sub);
+    if (!user) {
+      throw new UnauthorizedException('User session invalid or account removed');
+    }
     return {
-      id: payload.sub,
-      email: payload.email,
-      role: payload.role,
-      branchId: payload.branchId,
+      id: user.id,
+      email: user.email,
+      fullName: user.fullName,
+      role: user.role,
+      branchId: user.branchId,
     };
   }
 }

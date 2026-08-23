@@ -6,7 +6,7 @@ import { PaginationMeta } from '../../common/interfaces/pagination-meta.interfac
 import { QueryFilterDto } from './dto/query-filter.dto';
 
 @ApiTags('Products')
-@Controller('products')
+@Controller({ path: 'products', version: '1' })
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 

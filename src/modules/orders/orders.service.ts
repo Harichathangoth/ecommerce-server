@@ -52,4 +52,19 @@ export class OrdersService {
       throw new InternalServerErrorException('Database query failed while fetching order tracking details');
     }
   }
+
+  async updateOrderStatus(id: string, status: any): Promise<Order> {
+    try {
+      const order = await this.orderRepository.findOne({ where: { id } });
+      if (!order) {
+        throw new NotFoundException(`Order with ID "${id}" not found`);
+      }
+      order.status = status;
+      return await this.orderRepository.save(order);
+    } catch (error) {
+      if (error instanceof NotFoundException) throw error;
+      this.logger.error(`Error updating order status for ID "${id}": ${error.message}`, error.stack);
+      throw new InternalServerErrorException('Failed to update order status');
+    }
+  }
 }

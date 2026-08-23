@@ -3,7 +3,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { ValidationPipe, Logger } from '@nestjs/common';
+import { ValidationPipe, Logger, VersioningType } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import fastifyCookie from '@fastify/cookie';
 import { AppModule } from './app.module';
@@ -23,8 +23,15 @@ async function bootstrap() {
     secret: process.env.COOKIE_SECRET || 'e-com_cookie_secret_2026',
   });
 
-  const prefix = process.env.API_PREFIX || 'api/v1';
-  app.setGlobalPrefix(prefix);
+  // Base API Prefix
+  app.setGlobalPrefix('api');
+
+  // Native NestJS URI Versioning (v1, v2, v3, etc.)
+  app.enableVersioning({
+    type: VersioningType.URI,
+    prefix: 'v',
+    defaultVersion: '1',
+  });
 
   app.enableCors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
@@ -54,11 +61,11 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup(`${prefix}/docs`, app, document);
+  SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env.BACKEND_PORT || process.env.PORT || 4000;
   await app.listen(port, '0.0.0.0');
-  logger.log(`🚀 Enterprise E-Commerce API running on: http://localhost:${port}/${prefix}`);
+  logger.log(`🚀 Enterprise E-Commerce API running on: http://localhost:${port}/api/v1`);
 }
 
 bootstrap();

@@ -1,6 +1,5 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DataSource } from 'typeorm';
+import * as dotenv from 'dotenv';
 import { User } from '../modules/users/entities/user.entity';
 import { Role } from '../modules/roles/entities/role.entity';
 import { Permission } from '../modules/roles/entities/permission.entity';
@@ -16,34 +15,32 @@ import { Order } from '../modules/orders/entities/order.entity';
 import { OrderItem } from '../modules/orders/entities/order-item.entity';
 import { AuditLog } from '../modules/audit/entities/audit-log.entity';
 
-@Module({
-  imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        const dbConfig = configService.get('database');
-        return {
-          ...dbConfig,
-          entities: [
-            User,
-            Role,
-            Permission,
-            Branch,
-            Product,
-            ProductVariant,
-            ProductSpecification,
-            Category,
-            Banner,
-            BranchInventory,
-            StockTransfer,
-            Order,
-            OrderItem,
-            AuditLog,
-          ],
-        };
-      },
-    }),
+dotenv.config();
+
+export const AppDataSource = new DataSource({
+  type: 'postgres',
+  host: process.env.DB_HOST || 'localhost',
+  port: parseInt(process.env.DB_PORT || '5432', 10),
+  username: process.env.DB_USERNAME || 'postgres',
+  password: process.env.DB_PASSWORD || 'postgres',
+  database: process.env.DB_DATABASE || 'ecommerce_db',
+  entities: [
+    User,
+    Role,
+    Permission,
+    Branch,
+    Product,
+    ProductVariant,
+    ProductSpecification,
+    Category,
+    Banner,
+    BranchInventory,
+    StockTransfer,
+    Order,
+    OrderItem,
+    AuditLog,
   ],
-})
-export class DatabaseModule {}
+  migrations: ['src/database/migrations/*.ts'],
+  synchronize: true,
+  logging: process.env.NODE_ENV === 'development',
+});

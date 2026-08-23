@@ -1,0 +1,30 @@
+[
+  {
+    "fullName": "Global Super Admin",
+    "email": "admin@store.com",
+    "password": "AdminPassword123!",
+    "role": "SUPER_ADMIN",
+    "branchCode": null
+  },
+  {
+    "fullName": "Sarah Connor",
+    "email": "sarah.c@store.com",
+    "password": "StaffPassword123!",
+    "role": "BRANCH_ADMIN",
+    "branchCode": "HQ-01"
+  },
+  {
+    "fullName": "Marcus Wright",
+    "email": "marcus.w@store.com",
+    "password": "StaffPassword123!",
+    "role": "BRANCH_STAFF",
+    "branchCode": "EST-02"
+  },
+  {
+    "fullName": "David Miller",
+    "email": "david.m@store.com",
+    "password": "StaffPassword123!",
+    "role": "BRANCH_STAFF",
+    "branchCode": "WST-03"
+  }
+]

@@ -4,7 +4,7 @@ import { BranchesService } from './branches.service';
 import { Branch } from './entities/branch.entity';
 
 @ApiTags('Branches')
-@Controller('branches')
+@Controller({ path: 'branches', version: '1' })
 export class BranchesController {
   constructor(private readonly branchesService: BranchesService) {}
 
